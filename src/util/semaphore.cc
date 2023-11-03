@@ -13,7 +13,7 @@
 #include <windows.h>
 #endif
 
-#if defined(OS_MACOSX)
+#if defined(OS_MACOSX) && (MAC_OS_X_VERSION_MIN_REQUIRED > 1050 && !defined(__ppc__))
 
 Semaphore::Semaphore(int count) {
   native_handle_ = dispatch_semaphore_create(count);

@@ -8,11 +8,15 @@
 #ifndef UTIL_SEMAPHORE_H_
 #define UTIL_SEMAPHORE_H_
 
+#ifdef __APPLE__
+#include <AvailabilityMacros.h>
+#endif
+
 #include "util/build_config.h"
 
 #if defined(OS_WIN)
 #include <windows.h>
-#elif defined(OS_MACOSX)
+#elif defined(OS_MACOSX) && (MAC_OS_X_VERSION_MIN_REQUIRED > 1050 && !defined(__ppc__))
 #include <dispatch/dispatch.h>
 #elif defined(OS_ZOS)
 #include "zos-semaphore.h"
@@ -34,7 +38,7 @@ class Semaphore {
   // becomes positive and then decrements the counter.
   void Wait();
 
-#if defined(OS_MACOSX)
+#if defined(OS_MACOSX) && (MAC_OS_X_VERSION_MIN_REQUIRED > 1050 && !defined(__ppc__))
   using NativeHandle = dispatch_semaphore_t;
 #elif defined(OS_POSIX)
   using NativeHandle = sem_t;

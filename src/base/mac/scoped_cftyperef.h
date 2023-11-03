@@ -9,6 +9,7 @@
 
 #include "base/mac/scoped_typeref.h"
 
+#if defined(__OBJC__)
 namespace base {
 
 // ScopedCFTypeRef<> is patterned after std::unique_ptr<>, but maintains
@@ -45,4 +46,5 @@ using ScopedCFTypeRef =
 
 }  // namespace base
 
+#endif
 #endif  // BASE_MAC_SCOPED_CFTYPEREF_H_

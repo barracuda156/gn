@@ -9,6 +9,7 @@
 #include "base/logging.h"
 #include "base/memory/scoped_policy.h"
 
+#if defined(__OBJC__)
 namespace base {
 
 // ScopedTypeRef<> is patterned after std::unique_ptr<>, but maintains ownership
@@ -135,4 +136,5 @@ class ScopedTypeRef {
 
 }  // namespace base
 
+#endif
 #endif  // BASE_MAC_SCOPED_TYPEREF_H_

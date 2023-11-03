@@ -344,6 +344,7 @@ void Args::SetSystemVarsLocked(Scope* dest) const {
   static const char kMips[] = "mipsel";
   static const char kMips64[] = "mips64el";
   static const char kS390X[] = "s390x";
+  static const char kPPC[] = "ppc";
   static const char kPPC64[] = "ppc64";
   static const char kRISCV32[] = "riscv32";
   static const char kRISCV64[] = "riscv64";
@@ -368,6 +369,8 @@ void Args::SetSystemVarsLocked(Scope* dest) const {
     arch = kMips64;
   else if (os_arch == "s390x")
     arch = kS390X;
+  else if (os_arch == "ppc")
+    arch = kPPC;
   else if (os_arch == "ppc64" || os_arch == "ppc64le")
     // We handle the endianness inside //build/config/host_byteorder.gni.
     // This allows us to use the same toolchain as ppc64 BE

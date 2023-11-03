@@ -34,7 +34,9 @@ std::string OperatingSystemArchitecture() {
     arch = "x86_64";
   } else if (arch == "amd64") {
     arch = "x86_64";
-  } else if (os == "AIX" || os == "OS400") {
+  } else if (arch == "ppc" || arch == "powerpc" || arch == "Power Macintosh") {
+    arch = "ppc";
+  } else if (os == "AIX" || os == "OS400" || arch == "ppc64" || arch == "powerpc64") {
     arch = "ppc64";
   } else if (std::string(info.sysname) == "OS/390") {
     arch = "s390x";
